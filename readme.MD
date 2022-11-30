@@ -7,7 +7,7 @@ O frontend da aplicação foi desenvolvido com Angular e o backend foi simulado 
 
 # Protótipo
 -----------
-
+https://www.figma.com/file/kOtDtEYUTwEq6kp74SJGuU/TrocadeOleo?node-id=0%3A1
 
 # Checklist
 ------------
