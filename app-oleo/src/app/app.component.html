@@ -1,16 +1,9 @@
 <header>
 <app-header></app-header>
-<span [innerText]='getUsername()'></span>
+
 </header>
 <main>
-  <h1>Bem vindo ao seu aplicativo {{ title }} </h1>
-
   <router-outlet></router-outlet>
-
-  <input type="text" [(ngModel)]="emailAddress">
-  <p>{{ emailAddress }}@gmail.com</p>
-  <button (click)='onSubmitForm()'>Register</button>
-  <p>{{ formMessage }}</p>
 </main>
 <footer>
 <app-footer></app-footer>

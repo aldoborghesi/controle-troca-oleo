@@ -1,0 +1,11 @@
+<h1>Bem vindo ao seu aplicativo {{ title }} </h1>
+<span [innerText]='getUsername()'></span>
+
+
+<input type="text" [(ngModel)]="emailAddress">
+<p>{{ emailAddress }}@gmail.com</p>
+<button (click)='onSubmitForm()'>Register</button>
+<p>{{ formMessage }}</p>
+<app-totaltrocas>
+
+</app-totaltrocas>
