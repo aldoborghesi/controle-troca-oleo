@@ -1,5 +1,5 @@
 export class Trocaroleo {
-  public id: number;
+   public id: number;
   placa!:string;
   modelo!:string;
   km!:number;
