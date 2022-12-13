@@ -1,1 +1,27 @@
-<p>historico works!</p>
+<div class="container">
+
+    <h5> Histórico de Trocas de Óleo</h5>
+
+    <hr />
+    <div class="card-panel teal lighten-2" *ngIf="trocas?.length == 0">Não foi encontrado nenhuma troca de óleo</div>
+    <div class="card-panel" *ngIf="!!trocas">
+
+    <table class="striped">
+        <thead>
+          <tr>
+              <th>Placa</th>
+              <th>Modelo</th>
+              <th>KM</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let troca of trocas">
+            <td>{{ troca.placa}}</td>
+            <td>{{ troca.modelo}}</td>
+            <td>{{ troca.km}}</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+</div>

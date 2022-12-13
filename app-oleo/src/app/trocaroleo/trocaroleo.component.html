@@ -3,29 +3,25 @@
   <h5>Controle Troca de Óleo</h5>
   <h6>Entre com os dados da nova troca</h6>
   <hr />
-    <form class="col s12" #form="ngForm" (submit)="onSubmit()">
+    <form class="col s12"  [formGroup]="OilForm" (submit)="SaveTrocarOleo()">
       <div class="form-group">
         <div class="input-field col s12">
           <input
           id="input_placa"
           required
-          [(ngModel)] = "this.troca.placa" name="placa"
-          #placa="ngModel"
           type="text"
-          class="form-control">
+          class="form-control"
+          formControlName="placa"
+          />
           <label class="active" for="input_placa">PLACA</label>
         </div>
       </div>
       <div class="form-group">
         <div class="input-field col s6">
           <input
-          id="input_modelo"
-          [(ngModel)] = "this.troca.modelo" name="modelo"
-          #modelo="ngModel"
-          type="text"
           class="form-control"
-
-          >
+          formControlName="modelo"
+          />
           <label class="active" for="input_modelo">MODELO</label>
 
         </div>
@@ -33,17 +29,18 @@
 
       <div class="form-group">
         <div class="input-field col s12">
-          <input id="input_km" type="text"
-          [(ngModel)] = "this.troca.km" name="km"
-          #km="ngModel"
-          class="validate">
+          <input id="input_km"
+                    class="validate"
+          formControlName="km"
+          type="number"
+          />
           <label class="active" for="input_km">KILOMETRAGEM</label>
         </div>
       </div>
       <button
         class="btn waves-effect waves-light amber darken-4"
         type="submit"
-        [disabled]="!form.valid"
+        [disabled]="!OilForm.valid"
       >
         Enviar
         <i class="material-icons right">send</i>

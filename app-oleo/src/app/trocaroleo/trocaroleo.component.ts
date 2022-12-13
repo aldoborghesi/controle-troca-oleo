@@ -1,11 +1,11 @@
 
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Trocaroleo } from '../model/trocas';
 import { Constants } from './../util/constants';
 import { WebStorageUtil } from './../util/web-storage-util';
 import { NgForm } from '@angular/forms';
 import { TrocaroleoService} from './trocaroleo.service';
-
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-trocaroleo',
@@ -15,12 +15,10 @@ import { TrocaroleoService} from './trocaroleo.service';
 })
 export class TrocaroleoComponent implements OnInit {
 
-  @ViewChild('form') form!: NgForm;
-
+  OilForm: any;
   submitted = false;
-
   troca!: Trocaroleo;
-  trocas?: Trocaroleo[];
+  trocas!: Trocaroleo[];
 
   isSubmitted!: boolean;
   isShowMessage: boolean = false;
@@ -30,12 +28,17 @@ export class TrocaroleoComponent implements OnInit {
   constructor(private trocaService: TrocaroleoService) {}
 
   ngOnInit(): void {
-    //Shared.initializeWebStorage();
-    this.troca = new Trocaroleo('', '',0);
-    this.trocas = this.trocaService.getTrocaroleos();
+    this.getTrocas();
+    this.OilForm = new FormGroup({
+      placa: new FormControl(''),
+      modelo: new FormControl(''),
+      km: new FormControl(),
+    }
+
+    );
   }
 
-  onSubmit() {
+  SaveTrocarOleo(): void {
     this.isSubmitted = true;
     /*
     if (!this.trocaService.isExist(this.troca.placa)) {
@@ -45,7 +48,10 @@ export class TrocaroleoComponent implements OnInit {
     }
 */
 
-    this.trocaService.save(this.troca);
+    const newtroca: Trocaroleo = this.OilForm.value;
+    this.trocas.push(newtroca);
+    localStorage.setItem('trocas', JSON.stringify(this.trocas));
+    this.OilForm.reset();
 
     this.isShowMessage = true;
     this.isSuccess = true;
@@ -59,6 +65,13 @@ export class TrocaroleoComponent implements OnInit {
     //this.trocaService.notifyTotalTrocaroleos();
   }
 
+  getTrocas() : void {
+    if(localStorage.getItem('trocas')) {
+      this.trocas = JSON.parse(localStorage.getItem('trocas') || '{}');
+    } else {
+      this.trocas = [];
+    }
+  }
   /**
    * Realiza o clone do objeto, justamente para não refletir as mudanças
    * imediatamente na lista de usuários cadastrados sem pressionar o submit.
