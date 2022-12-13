@@ -10,6 +10,7 @@ import { TotaltrocasComponent } from './totaltrocas/totaltrocas.component';
 import { TrocaroleoComponent } from './trocaroleo/trocaroleo.component';
 import { LandPageComponent } from './land-page/land-page.component';
 import { HistoricoComponent } from './historico/historico.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { HistoricoComponent } from './historico/historico.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     FormsModule
   ],
   providers: [],
