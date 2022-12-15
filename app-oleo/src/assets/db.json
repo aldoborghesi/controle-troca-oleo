@@ -1,0 +1,44 @@
+{
+  "trocas": [
+    {
+      "placa": "ABN-4592",
+      "modelo": "CORSA",
+      "km": 49727,
+      "id": 10
+    },
+    {
+      "placa": "CHG-3322",
+      "modelo": "TCROSS",
+      "km": 4377,
+      "id": 20
+    },
+    {
+      "placa": "HUE2-4788",
+      "modelo": "ONIX",
+      "km": 24977,
+      "id": 30
+    },
+    {
+      "placa": "YH322-0044",
+      "modelo": "LANDAU",
+      "km": 54977,
+      "id": 40
+    },
+    {
+      "placa": "NGG-49777",
+      "modelo": "MAVERIC",
+      "km": 64978,
+      "id": 50
+    },
+    {
+      "placa": "FC3G-44322",
+      "modelo": "VOLVO C60",
+      "km": 3233,
+      "id": 380
+    }
+  ],
+  "trocastotal" : [
+    {
+    "value" : 40
+  }]
+}

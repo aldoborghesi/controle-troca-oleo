@@ -20,7 +20,9 @@ import { ThisReceiver } from '@angular/compiler';
 export class TrocaroleoService {
   trocas!: Trocaroleo[];
 
-  constructor() {
+  constructor(
+    private http: HttpClient
+  ) {
     this.trocas = WebStorageUtil.get(Constants.TROCAROLEO_KEY);
 
   }
@@ -86,4 +88,10 @@ isExist(value: string): boolean {
     //return this.TrocaroleoSource.asObservable()
   }
     */
+
+  getTotalTrocas() {
+    return this.http.get<{value: number}[]> ('http://localhost:4200/assets/totais.json');
+
+
+  }
 }

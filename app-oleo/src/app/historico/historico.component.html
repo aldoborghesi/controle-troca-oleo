@@ -16,9 +16,12 @@
         </thead>
 
         <tbody>
-            <tr *ngFor="let troca of trocas">
+            <tr *ngFor="let troca of this.trocas"
+            [routerLink]="['/historico', troca.trocaid]"
+
+            >
             <td>{{ troca.placa}}</td>
-            <td>{{ troca.modelo}}</td>
+            <td>{{ troca.modelo | uppercase }}</td>
             <td>{{ troca.km}}</td>
           </tr>
         </tbody>

@@ -1,5 +1,7 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Trocaroleo } from '../model/trocas';
+
 
 @Component({
   selector: 'app-historico',
@@ -8,9 +10,13 @@ import { Trocaroleo } from '../model/trocas';
 })
 export class HistoricoComponent implements OnInit {
 
+
   trocas!: Trocaroleo[];
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.ShowTrocas();
@@ -22,6 +28,10 @@ export class HistoricoComponent implements OnInit {
     } else {
       this.trocas = [];
     }
+  }
+
+  onClickItem(_t19: Trocaroleo) {
+    this.router.navigate(['/historico/detalhes', _t19?.trocaid]);
   }
 
 }

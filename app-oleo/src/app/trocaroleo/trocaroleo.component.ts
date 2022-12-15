@@ -30,6 +30,7 @@ export class TrocaroleoComponent implements OnInit {
   ngOnInit(): void {
     this.getTrocas();
     this.OilForm = new FormGroup({
+      trocaid: new FormControl(),
       placa: new FormControl(''),
       modelo: new FormControl(''),
       km: new FormControl(),
@@ -40,15 +41,15 @@ export class TrocaroleoComponent implements OnInit {
 
   SaveTrocarOleo(): void {
     this.isSubmitted = true;
-    /*
-    if (!this.trocaService.isExist(this.troca.placa)) {
-      this.trocaService.save(this.troca);
-    } else {
-      this.trocaService.update(this.troca);
+    if (!this.OilForm.valid) {
+      console.log('Formulário Inválido');
+      return;
     }
-*/
+
+    this.OilForm.value.trocaid = Math.round(Math.random() * 1000);
 
     const newtroca: Trocaroleo = this.OilForm.value;
+
     this.trocas.push(newtroca);
     localStorage.setItem('trocas', JSON.stringify(this.trocas));
     this.OilForm.reset();
@@ -56,11 +57,6 @@ export class TrocaroleoComponent implements OnInit {
     this.isShowMessage = true;
     this.isSuccess = true;
     this.message = 'Cadastro realizado com sucesso!';
-
-    //this.form.reset();
-    this.troca = new Trocaroleo('', '', 0);
-
-    this.trocas = this.trocaService.getTrocaroleos();
 
     //this.trocaService.notifyTotalTrocaroleos();
   }

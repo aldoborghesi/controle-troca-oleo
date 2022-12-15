@@ -1,0 +1,5 @@
+{
+  "/trocas/modelo/:t" : "/trocas?modelo=:t",
+  "/trocas": "/trocas",
+  "/troca/:id": "/trocas/:id"
+}
