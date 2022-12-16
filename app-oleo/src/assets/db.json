@@ -35,10 +35,18 @@
       "modelo": "VOLVO C60",
       "km": 3233,
       "id": 380
+    },
+    {
+      "trocaid": 707,
+      "placa": "SER4545",
+      "modelo": "FORD KA",
+      "km": 3200898,
+      "id": 381
     }
   ],
-  "trocastotal" : [
+  "trocastotal": [
     {
-    "value" : 40
-  }]
+      "value": 40
+    }
+  ]
 }

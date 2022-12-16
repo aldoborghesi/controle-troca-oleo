@@ -4,14 +4,13 @@ import { Trocaroleo } from '../model/trocas';
 import { Constants } from './../util/constants';
 import { WebStorageUtil } from './../util/web-storage-util';
 import { NgForm } from '@angular/forms';
-import { TrocaroleoService} from './trocaroleo.service';
-import { FormControl, FormGroup } from '@angular/forms';
 
+import { FormControl, FormGroup } from '@angular/forms';
+import { TrocaOilObserv } from '../services/trocaoilobserv';
 @Component({
   selector: 'app-trocaroleo',
   templateUrl: './trocaroleo.component.html',
-  styleUrls: ['./trocaroleo.component.css'],
-  providers: [TrocaroleoService],
+  styleUrls: ['./trocaroleo.component.css']
 })
 export class TrocaroleoComponent implements OnInit {
 
@@ -25,7 +24,7 @@ export class TrocaroleoComponent implements OnInit {
   isSuccess!: boolean;
   message!: string;
 
-  constructor(private trocaService: TrocaroleoService) {}
+  constructor(private trocaOilObserv: TrocaOilObserv) {}
 
   ngOnInit(): void {
     this.getTrocas();
@@ -57,6 +56,10 @@ export class TrocaroleoComponent implements OnInit {
     this.isShowMessage = true;
     this.isSuccess = true;
     this.message = 'Cadastro realizado com sucesso!';
+
+    // Salvar a entidade no NGserver
+    console.log("Persistindo no Json server");
+    this.trocaOilObserv.save(newtroca).subscribe();
 
     //this.trocaService.notifyTotalTrocaroleos();
   }

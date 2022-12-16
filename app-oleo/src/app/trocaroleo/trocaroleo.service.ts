@@ -1,3 +1,4 @@
+import { TrocaOilObserv } from './../services/trocaoilobserv';
 import { Trocaroleo } from './../model/trocas';
 import { Constants } from './../util/constants';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
@@ -21,7 +22,8 @@ export class TrocaroleoService {
   trocas!: Trocaroleo[];
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private trocaOilObserv: TrocaOilObserv
   ) {
     this.trocas = WebStorageUtil.get(Constants.TROCAROLEO_KEY);
 
@@ -29,17 +31,16 @@ export class TrocaroleoService {
 
   save(troca: Trocaroleo) {
     this.trocas = WebStorageUtil.get(Constants.TROCAROLEO_KEY);
-    /*
-    let json = JSON.stringify(troca);
-    let new_trocas = [];
-    new_trocas.push(troca);
-    localStorage.setItem('teste', json);
-    */
+
 
     this.trocas = [];
     this.trocas.push(troca);
 
     WebStorageUtil.set(Constants.TROCAROLEO_KEY, this.trocas);
+    // Salvar a entidade no NGserver
+    console.log("Persistindo no Json server");
+    this.trocaOilObserv.save(troca).subscribe();
+
   }
 
   update(Trocaroleo: Trocaroleo) {
